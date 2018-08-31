@@ -19,13 +19,6 @@ mongoose.connect(config.database, err => {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan('dev'));
-// app.use(cors());
-
-// app.get('/', (req, res, next) => {
-//     res.json({
-//         user: 'Avinash Dewangan'
-//     });
-// });
 
 const userRoutes = require('./routes/account');
 app.use('/api/accounts', userRoutes);

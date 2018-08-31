@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt-nodejs');
 const crypto = require('crypto');
 
 const UserSchema = new Schema({
-    email: { type:String, unique:true, loadClass:true },
+    email: { type: String, unique: true, lowercase: true },
     name: String,
     password: String,
     picture: String,
@@ -18,7 +18,7 @@ const UserSchema = new Schema({
         country: String,
         postalCode: String
     },
-    created: { type:Date, default:Date.now }
+    created: { type:Date, default:Date.now },
 
 });
 
@@ -46,10 +46,10 @@ UserSchema.methods.gravatar = function(size) {
     }
     else
      {
-    var md5 = crypto.hash.createHash('md5').update(this.email).digest('hex');
-    return 'http://gravatar.com/avatar/' + md5 + '?s' + size + '&d=retro';
+    var md5 = crypto.createHash('md5').update(this.email).digest('hex');
+    return 'https://gravatar.com/avatar/' + md5 + '?s' + size + '&d=retro';
  }
 
 }
 
-module.exports = mongoose.model('user', UserSchema);
+module.exports = mongoose.model('User', UserSchema);
