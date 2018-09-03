@@ -3,10 +3,16 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 
 const config = require('./config');
 
 const app = express();
+app.use(express.static(path.join(__dirname, 'dist')));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist/nodeApp/index.html'));
+});
  
 mongoose.connect(config.database, err => {
     if (err) {

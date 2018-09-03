@@ -3,10 +3,10 @@
     <a routerLink="/" class="navbar-barnd">
     <img src="./assets/img/logo.png" alt="logo" id="logo">
     </a>
-    <button class="navbar-toggler" (click)="isCollapsed = !isCollapsed">
+    <button class="navbar-toggler" (click)="isCollpased = !isCollpased">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div [ngbCollapse]="isCollapsed" style="align-items:left;margin-left:50px;" class="collapse navbar-collapse flex-column" id="navbarNav">
+    <div [ngbCollapse]="isCollpased" style="align-items:left;margin-left:50px;" class="collapse navbar-collapse flex-column" id="navbarNav">
       <div class="input-group w-75">
         <input type="text" name="search" class="form-control" [(ngModel)]="searchTerm" (keyup.enter)="search()" id="">
         <span class="bg-warning" id="searchBtn" (click)="search()">
